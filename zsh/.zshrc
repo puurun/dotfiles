@@ -59,6 +59,23 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# OSC 133 markers for tmux/terminal prompt navigation
+if [[ -n "$TMUX" ]]; then
+  function _osc133_precmd() {
+    printf '\e]133;D;%s\a' "$?"
+    printf '\e]133;A\a'
+  }
+
+  function _osc133_preexec() {
+    printf '\e]133;C\a'
+  }
+
+  autoload -Uz add-zsh-hook
+  add-zsh-hook precmd _osc133_precmd
+  add-zsh-hook preexec _osc133_preexec
+fi
+
+
 # Has to go to the end
 eval "$(starship init zsh)"
 
