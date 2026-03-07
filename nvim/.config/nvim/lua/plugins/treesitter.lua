@@ -1,13 +1,13 @@
 local function treesitter_init()
-  local ok, ts_configs = pcall(require, 'nvim-treesitter.configs')
-  if not ok then
+  local ok, ts = pcall(require, 'nvim-treesitter')
+  if not ok or type(ts.setup) ~= 'function' then
     vim.schedule(function()
-      vim.notify('nvim-treesitter is not available yet. Run :Lazy sync', vim.log.levels.WARN)
+      vim.notify('nvim-treesitter setup API is unavailable. Check plugin install/version.', vim.log.levels.WARN)
     end)
     return
   end
 
-  ts_configs.setup({
+  ts.setup({
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
     auto_install = true,
     highlight = { enable = true },
@@ -72,7 +72,6 @@ return {
     -- Syntax highlighting, textobjects, and AST-based motions.
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       -- Extra textobject queries and motions.
       'nvim-treesitter/nvim-treesitter-textobjects',
