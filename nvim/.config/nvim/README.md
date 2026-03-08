@@ -7,7 +7,7 @@
 ## LSP 추가 방법
 
 1. LSP 서버 실행 파일을 시스템에 직접 설치합니다.
-- 예: `rust-analyzer`, `basedpyright-langserver`, `ruff`, `typescript-language-server`, `svelteserver`, `yaml-language-server`, `taplo`
+- 예: `rust-analyzer`, `basedpyright-langserver`, `ruff`, `typescript-language-server`, `svelteserver`, `yaml-language-server`, `taplo`, `tailwindcss-language-server`
 
 2. `lua/lsp/servers/`에 서버 파일을 추가하고, `lua/lsp/servers/init.lua`의 `server_modules`에 등록합니다.
 
@@ -40,6 +40,7 @@ end
 - `svelte`
 - `yamlls`
 - `taplo`
+- `tailwindcss`
 
 ## Formatter 추가 방법 (conform.nvim)
 

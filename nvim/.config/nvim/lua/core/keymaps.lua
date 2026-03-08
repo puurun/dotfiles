@@ -18,6 +18,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Git related
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = 'Git Status' })
 
+-- Quickfix
+vim.keymap.set('n', '<leader>qo', vim.cmd.copen, { desc = '[Q]uickfix [O]pen' })
+vim.keymap.set('n', '<leader>ql', vim.cmd.cclose, { desc = '[Q]uickfix c[L]ose' })
+vim.keymap.set('n', '<leader>qn', vim.cmd.cnext, { desc = '[Q]uickfix [N]ext' })
+vim.keymap.set('n', '<leader>qp', vim.cmd.cprev, { desc = '[Q]uickfix [P]revious' })
+
 -- Taken from theprimagen
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down' })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up' })

@@ -6,6 +6,7 @@ local server_modules = {
   'lsp.servers.ruff',
   'lsp.servers.ts_ls',
   'lsp.servers.svelte',
+  'lsp.servers.tailwindcss',
   'lsp.servers.yamlls',
   'lsp.servers.taplo',
 }
