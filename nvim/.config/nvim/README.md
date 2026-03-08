@@ -16,7 +16,10 @@
 ```lua
 function M.setup(capabilities, utils)
   vim.lsp.config('lua_ls', utils.with_capabilities(capabilities, {
-    root_dir = utils.root_from({ '.luarc.json', '.git' }),
+    root_markers = {
+      { '.luarc.json' },
+      { '.git' },
+    },
     settings = {
       Lua = {
         diagnostics = { globals = { 'vim' } },
@@ -27,7 +30,7 @@ function M.setup(capabilities, utils)
 end
 ```
 
-3. 필요하면 각 서버 파일의 `utils.root_from({...})` 마커를 프로젝트에 맞게 조정합니다.
+3. 필요하면 각 서버 파일의 `root_markers`를 프로젝트에 맞게 조정합니다.
 
 현재 기본 등록 서버:
 - `rust_analyzer`
@@ -72,7 +75,7 @@ formatters_by_ft = {
 
 - LSP가 안 붙으면:
   - 서버 바이너리 설치 여부 확인
-  - `root_dir` 마커가 현재 프로젝트와 맞는지 확인
+  - `root_markers`가 현재 프로젝트와 맞는지 확인
 - 포맷이 안 되면:
   - formatter CLI 설치 여부 확인
   - filetype 이름과 `formatters_by_ft` 키가 일치하는지 확인

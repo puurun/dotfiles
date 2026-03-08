@@ -2,6 +2,10 @@ local M = {}
 
 function M.setup(capabilities, utils)
   vim.lsp.config('basedpyright', utils.with_capabilities(capabilities, {
+    root_markers = {
+      { 'uv.lock', 'pyproject.toml' },
+      { '.git' },
+    },
     settings = {
       basedpyright = {
         analysis = {
@@ -12,7 +16,6 @@ function M.setup(capabilities, utils)
         },
       },
     },
-    root_dir = utils.root_from({ 'uv.lock', 'pyproject.toml', '.git' }),
   }))
   vim.lsp.enable('basedpyright')
 end
