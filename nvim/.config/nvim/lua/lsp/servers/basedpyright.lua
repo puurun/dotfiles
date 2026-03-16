@@ -8,6 +8,7 @@ function M.setup(capabilities, utils)
     },
     settings = {
       basedpyright = {
+        locale = "en",
         analysis = {
           autoSearchPaths = true,
           diagnosticMode = 'workspace',

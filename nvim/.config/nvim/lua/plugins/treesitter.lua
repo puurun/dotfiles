@@ -31,9 +31,6 @@ local function treesitter_init()
     pattern = languages,
     callback = function(event)
       pcall(vim.treesitter.start, event.buf)
-      pcall(function()
-        vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-      end)
     end,
   })
 end
