@@ -16,9 +16,26 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local is_vscode = vim.g.vscode ~= nil
+
 require('lazy').setup(
   {
-    spec = { import = 'plugins' },
+    spec = is_vscode and {
+      {
+        name = 'vscode-local-config',
+        dir = vim.fn.stdpath('config'),
+        lazy = false,
+        cond = true,
+        config = function()
+          require('vscode_config').setup()
+        end,
+      },
+    } or {
+      { import = 'plugins' },
+    },
+    defaults = {
+      cond = not is_vscode,
+    },
     change_detection = { notify = false }
   }
 )

@@ -6,12 +6,15 @@ function M.setup(capabilities, utils)
       { 'uv.lock', 'pyproject.toml' },
       { '.git' },
     },
+    flags = {
+      debounce_text_changes = 300,
+    },
     settings = {
       basedpyright = {
         locale = "en",
         analysis = {
           autoSearchPaths = true,
-          diagnosticMode = 'workspace',
+          diagnosticMode = 'openFilesOnly',
           useLibraryCodeForTypes = true,
           typeCheckingMode = 'basic',
         },

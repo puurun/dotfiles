@@ -20,14 +20,6 @@ function M.on_attach(event)
   vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, { desc = '[G]oto [R]eferences', buffer = bufnr })
   vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, { desc = '[G]oto [I]mplementation', buffer = bufnr })
   vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition, { desc = '[T]ype [D]efinition', buffer = bufnr })
-  vim.keymap.set('n', '<leader>fc', function()
-    local ok, conform = pcall(require, 'conform')
-    if ok then
-      conform.format({ bufnr = bufnr, lsp_format = 'fallback' })
-      return
-    end
-    vim.lsp.buf.format({ bufnr = bufnr })
-  end, { desc = '[F]ormat [C]ode', buffer = bufnr })
   vim.keymap.set('n', '<leader>ih', function()
     toggle_inlay_hint(bufnr)
   end, { desc = 'Toggle inlay hint', buffer = bufnr })

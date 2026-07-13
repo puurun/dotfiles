@@ -13,7 +13,7 @@ vim.keymap.set('n', ']d', function()
   vim.diagnostic.jump({ count = 1 })
 end, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = '[D]iagnostic [L]ist' })
 
 -- Git related
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = 'Git Status' })
@@ -52,3 +52,13 @@ vim.keymap.set({ 'i', 's' }, '<C-c>', function()
   vim.snippet.stop()
   return '<Esc><cmd>update<cr>'
 end, { expr = true, silent = true, desc = 'Leave insert/select and save buffer' })
+
+
+-- Global format keymap (Works on every file, using Conform)
+vim.keymap.set({ 'n', 'v' }, '<leader>fc', function()
+  require('conform').format({
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 500,
+  })
+end, { desc = '[F]ormat [C]ode' })

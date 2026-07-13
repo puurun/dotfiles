@@ -1,1 +1,19 @@
-*local*
+# macOS metadata
+.DS_Store
+
+# Editor/runtime files
+.nvimlog
+*.sw[a-p]
+*~
+
+# Machine-local configuration
+local.conf
+*.local
+*.local.*
+.zshrc.local
+
+# Environment files may contain credentials
+.env
+.env.*
+!.env.example
+!.env.sample
